@@ -15,7 +15,11 @@ pipeline {
         }
         stage('Run Linter') {
             steps {
-                bat 'python -m flake8 app.py'
+                bat '''
+                python -m pip install --upgrade pip
+                python -m pip install flake8
+                python -m flake8 app.py
+                '''
             }
         }
     }
